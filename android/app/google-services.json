@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1057674984819",
+    "firebase_url": "https://platter-75509.firebaseio.com",
+    "project_id": "platter-75509",
+    "storage_bucket": "platter-75509.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1057674984819:android:537252bf86c0055a079906",
+        "android_client_info": {
+          "package_name": "com.platter.platter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1057674984819-rk9mse11qli7cfi6o5mr51d2dlu1n6lk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.platter.platter",
+            "certificate_hash": "0af4a579be00a6cc19fc779008ba6e82e7f964d8"
+          }
+        },
+        {
+          "client_id": "1057674984819-9mmoghnb94rr3pcpv4n16m3umpde6ub2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHbN7zw7AP3bITyJvENuLvepEG8jx-wqI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1057674984819-9mmoghnb94rr3pcpv4n16m3umpde6ub2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
