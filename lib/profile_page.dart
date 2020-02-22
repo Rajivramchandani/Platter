@@ -11,7 +11,6 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: ListView(
-
             children: <Widget>[
       Container(
         height: MediaQuery.of(context).size.height / 2.7,
