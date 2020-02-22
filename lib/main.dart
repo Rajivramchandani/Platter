@@ -3,6 +3,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:platter/screens/ProfileScreen.dart';
+import 'package:platter/screens/getstarted.dart';
+import 'package:platter/Components/rounded_button.dart';
 
 void main() => runApp(MyApp());
 bool isSigned = false;
@@ -15,9 +17,9 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Google Signin APP',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primaryColor: Color(0xff9C58D2),
+        primaryColor: Colors.blue,
       ),
-      home: GoogleSignApp(),
+      home : GetStarted(),
     );
   }
 }
@@ -38,7 +40,7 @@ class _GoogleSignAppState extends State<GoogleSignApp> {
 
     final GoogleSignInAccount googleUser = await _googlSignIn.signIn();
     final GoogleSignInAuthentication googleAuth =
-        await googleUser.authentication;
+    await googleUser.authentication;
 
     final AuthCredential credential = GoogleAuthProvider.getCredential(
       accessToken: googleAuth.accessToken,
@@ -69,9 +71,10 @@ class _GoogleSignAppState extends State<GoogleSignApp> {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => ProfileScreen(
-              detailsUser: UserDetails(firebaseuser.displayName,
-                  firebaseuser.photoUrl, firebaseuser.email)),
+          builder: (context) =>
+              ProfileScreen(
+                  detailsUser: UserDetails(firebaseuser.displayName,
+                      firebaseuser.photoUrl, firebaseuser.email)),
         ),
       );
     } else {
@@ -89,55 +92,51 @@ class _GoogleSignAppState extends State<GoogleSignApp> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Builder(
-        builder: (context) => Stack(
-          fit: StackFit.expand,
-          children: <Widget>[
-            Container(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height,
-              child: Image.network(
-                  'https://images.unsplash.com/photo-1518050947974-4be8c7469f0c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
-                  fit: BoxFit.fill,
-                  color: Color.fromRGBO(255, 255, 255, 0.6),
-                  colorBlendMode: BlendMode.modulate),
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+        builder: (context) =>
+            Stack(
+              fit: StackFit.expand,
               children: <Widget>[
-                SizedBox(height: 10.0),
                 Container(
-                    width: 250.0,
-                    child: Align(
-                      alignment: Alignment.center,
-                      child: RaisedButton(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(30.0)),
-                        color: Color(0xffffffff),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: <Widget>[
-                            Icon(
-                              FontAwesomeIcons.google,
-                              color: Color(0xffCE107C),
-                            ),
-                            SizedBox(width: 10.0),
-                            Text(
-                              'Sign in with Google',
-                              style: TextStyle(
-                                  color: Colors.black, fontSize: 18.0),
-                            ),
-                          ],
-                        ),
-                        onPressed: () => _signIn(context)
-                            .then((FirebaseUser user) => print(user))
-                            .catchError((e) => print(e)),
-                      ),
-                    )),
+                  width: MediaQuery
+                      .of(context)
+                      .size
+                      .width,
+                  height: MediaQuery
+                      .of(context)
+                      .size
+                      .height,
+                  child: Image.asset('assets/food-preparation-1709526.jpg',
+                  fit: BoxFit.cover,),
 
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    SizedBox(height: 420.0),
+                    Container(
+                      width: 350.0,
+                      child: Align(
+                        alignment: Alignment.center,
+                        child:
+                            RoundedButton(
+                                title: 'Sign in with google ',
+                                showIcon: Icon(
+                                  FontAwesomeIcons.google,
+                                  color: Colors.red,
+                                ),
+                                onPressed: () =>
+                                    _signIn(context)
+                                        .then((FirebaseUser user) =>
+                                        print(user))
+                                        .catchError((e) => print(e)),
+                              colors: Colors.black,
+                            ),
+                      ),
+                    ),
+                  ],
+                ),
               ],
             ),
-          ],
-        ),
       ),
     );
   }

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:platter/Components/rounded_button.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:platter/main.dart';
+
 class GetStarted extends StatefulWidget {
   @override
   _GetStartedState createState() => _GetStartedState();
@@ -9,15 +11,17 @@ class GetStarted extends StatefulWidget {
 
 class _GetStartedState extends State<GetStarted> {
   final _firestore = Firestore.instance;
- void getMessages() async{
-   var messages = await _firestore.collection('recipies').getDocuments();
-   for (var message in messages.documents){
-     print(message.data);
-   }
- }
+
+  void getMessages() async {
+    var messages = await _firestore.collection('recipies').getDocuments();
+    for (var message in messages.documents) {
+      print(message.data);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-   getMessages();
+    getMessages();
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -47,7 +51,18 @@ class _GetStartedState extends State<GetStarted> {
               child: RoundedButton(
                 title: 'Get Started',
                 colors: Colors.black.withOpacity(0.7),
-                onPressed: () {},
+                showIcon: Icon(
+                  Icons.keyboard_arrow_right,
+                  color: Colors.white,
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => GoogleSignApp(),
+                    ),
+                  );
+                },
               ),
             ),
           ],
